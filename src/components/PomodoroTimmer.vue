@@ -27,7 +27,8 @@ const NumbertoString = (number: number) => {
 };
 
 const restartTimmer = () => {
-  
+  clearInterval(progressInterval);
+  time.value = 1500;
 };
 </script>
 
