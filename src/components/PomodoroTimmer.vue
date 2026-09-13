@@ -1,9 +1,26 @@
 <script setup lang="ts">
+import { ref } from "vue";
 import Btn from "./Btn.vue";
 
-const startTimmer = () => {};
+const time = ref(1500);
+let progressInterval: ReturnType<typeof setInterval>;
 
-const restartTimmer = () => {};
+const startTimmer = () => {
+  progressInterval = setInterval(() => {
+    time.value--;
+    
+    if (time.value === 0) {
+      clearInterval(progressInterval);
+      time.value = 1500;
+    }
+    
+  }, 1000);
+};
+
+
+const restartTimmer = () => {
+  
+};
 </script>
 
 <template>
@@ -13,8 +30,8 @@ const restartTimmer = () => {};
       <span>25 : 00</span>
     </div>
     <div class="btns">
-      <Btn variation="primary" @click="">Start ▶︎</Btn>
-      <Btn variation="primary" @click="">Restart ⟳</Btn>
+      <Btn variation="primary" @click="startTimmer">Start ▶︎</Btn>
+      <Btn variation="primary" @click="restartTimmer">Restart ⟳</Btn>
     </div>
   </div>
 </template>
