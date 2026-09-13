@@ -13,10 +13,18 @@ const startTimmer = () => {
       clearInterval(progressInterval);
       time.value = 1500;
     }
-    
+    NumbertoString(time.value);
   }, 1000);
 };
-
+const NumbertoString = (number: number) => {
+  const minutes = Math.trunc(number / 60)
+    .toString()
+    .padStart(2, "0");
+  const seconds = Math.trunc(number % 60)
+    .toString()
+    .padStart(2, "0");
+  return `${minutes}:${seconds}`;
+};
 
 const restartTimmer = () => {
   
